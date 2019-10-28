@@ -1,0 +1,2 @@
+include ':app', ':fullscreenvideowebview'
+rootProject.name='Full Screen Video WebView'
