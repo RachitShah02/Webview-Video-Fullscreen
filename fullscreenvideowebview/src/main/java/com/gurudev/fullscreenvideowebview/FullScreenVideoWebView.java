@@ -54,7 +54,7 @@ public class FullScreenVideoWebView extends WebView {
             ((FrameLayout) ((Activity) context).getWindow().getDecorView()).removeView(this.mCustomView);
             this.mCustomView = null;
             ((Activity) context).getWindow().getDecorView().setSystemUiVisibility(this.mOriginalSystemUiVisibility);
-            ((Activity) context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            ((Activity) context).setRequestedOrientation(orientation);
             this.mCustomViewCallback.onCustomViewHidden();
             this.mCustomViewCallback = null;
         }
@@ -66,10 +66,10 @@ public class FullScreenVideoWebView extends WebView {
             }
             this.mCustomView = paramView;
             this.mOriginalSystemUiVisibility = ((Activity) context).getWindow().getDecorView().getSystemUiVisibility();
-            ((Activity) context).setRequestedOrientation(orientation);
+            ((Activity) context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             this.mCustomViewCallback = paramCustomViewCallback;
             ((FrameLayout) ((Activity) context).getWindow().getDecorView()).addView(this.mCustomView, new FrameLayout.LayoutParams(-1, -1));
-            ((Activity) context).getWindow().getDecorView().setSystemUiVisibility(3846);
+            ((Activity) context).getWindow().getDecorView().setSystemUiVisibility(3846 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
     }
 }
